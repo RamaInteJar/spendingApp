@@ -13,18 +13,18 @@ const SpendingForm = (props) => {
   
   
   const titleChangeHandler = (event) => {
-    setEnteredTitle(event.target.value)
+  setEnteredTitle(event.target.value)
     
     // setUserInput((prevState) => {
     //   return { ...prevState, enteredTitle: event.target.value };
     // });
   }
 
-  const changeAmountHandler = (event) => {
+  const amountChangeHandler = (event) => {
       setEnteredAmount(event.target.value)
     
   }
-  const changeDateHandler = (event) => { 
+  const dateChangeHandler = (event) => { 
       setEnteredDate(event.target.value)
  
   };
@@ -44,15 +44,18 @@ const SpendingForm = (props) => {
   }
   
   return (
-    <form className="border-2 bg-blend-color-dodge  bg-slate-500 max-w-5xl p-10 mx-auto rounded-xl" onSubmit={submitHandler}>
+    <form
+      className="border-2 bg-blend-color-dodge  bg-slate-500 max-w-5xl p-10 mx-auto rounded-xl"
+      onSubmit={submitHandler}
+    >
       <div className="inline-flex space-x-5">
         <div className="flex flex-col">
           <label className="text-bold text-black text-lg">title</label>
           <input
             type="text"
+            value={enteredTitle}
             className="border-4 w-80  h-11 rounded-l mb-6"
             onChange={titleChangeHandler}
-            value={enteredTitle}
           />
         </div>
         <div className="flex flex-col">
@@ -62,7 +65,7 @@ const SpendingForm = (props) => {
             min="0.01"
             step="0.01"
             className="border-4 w-80 mb-6 h-11 rounded-l"
-            onChange={changeAmountHandler}
+            onChange={amountChangeHandler}
             value={enteredAmount}
           />
         </div>
@@ -74,7 +77,7 @@ const SpendingForm = (props) => {
           min="2019-01-01"
           max="2022-12-31"
           className="border-4 w-80 mb-6 h-11 rounded-l"
-          onChange={changeDateHandler}
+          onChange={dateChangeHandler}
           value={enteredDate}
         />
       </div>
